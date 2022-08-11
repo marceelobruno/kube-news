@@ -55,15 +55,15 @@ jobs:
 
       # Kubernetes Set Context 
         - name: Kubernetes Set Context
-          uses: Azure/k8s-set-context@v3.0
+          uses: Azure/k8s-set-context@v2
           with:
             method: kubeconfig
             kubeconfig: ${{secrets.K8S_CONFIG}}
             
         - name: Deploy to Kubernetes cluster
-          uses: Azure/k8s-deploy@v4.3
+          uses: Azure/k8s-deploy@v3.1
           with:
             images: marceelobruno/kube-news:${{github.run_number}}
             manifests: |
-              src/k8s/deployment.yaml
+              kube-news/src/k8s/deployment.yaml
   
